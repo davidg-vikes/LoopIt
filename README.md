@@ -1,7 +1,7 @@
 # LoopIt (Chrome Side Panel Extension)
 
 LoopIt is a productivity-focused Chrome Extension that lives in the Side Panel and loops precise YouTube playback intervals.
-
+It is available at this link: https://chromewebstore.google.com/detail/loopit/kgobfeiphcmonaobfljfddhpeokkdcnd
 
 ## Usage
 
