@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>LoopIt</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="header">
+    <div class="title">
+      <img src="icons/icon32.png" alt="LT logo">
+      <div>
+        <div class="name">LoopIt</div>
+        <div class="subtitle">Side-panel YouTube interval looper</div>
+      </div>
+    </div>
+
+    <label class="toggle">
+      <input id="themeToggle" type="checkbox" />
+      <span>Dark</span>
+    </label>
+  </header>
+
+  <main class="stack">
+    <section class="card">
+      <div class="row" style="display: none;">
+        <input id="videoInput" class="grow" type="text" placeholder="YouTube URL or Video ID" />
+        <button id="loadBtn" class="btn primary">Open</button>
+      </div>
+      <div class="row small">
+        <button id="useTabBtn" class="btn" title="Link to the currently active YouTube tab so you can control playback">Connect current YouTube tab</button>
+        <div id="status" class="status">Ready.</div>
+      </div>
+      <div class="row small">
+        <div class="small" id="playerMeta">Not connected.</div>
+      </div>
+    </section>
+
+    <section class="card">
+      <div class="row controls">
+        <div class="group">
+          <label class="check" title="Repeat currently selected interval">
+            <input id="loopToggle" type="checkbox" />
+            <span>Repeat</span>
+          </label>
+          <select id="intervalSelect" class="select" title="Choose which interval to loop">
+            <option value="auto">Interval: Auto</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="row small">
+        <button id="jumpBtn" class="btn" title="Jump to the currently selected interval">Jump to interval</button>
+        <button id="playBtn" class="btn" title="Play the video">Play</button>
+        <button id="pauseBtn" class="btn" title="Pause the video">Pause</button>
+        <div class="group">
+          <label class="mini">Speed</label>
+          <select id="speedSelect" class="select">
+            <option value="0.25">0.25×</option>
+            <option value="0.5">0.5×</option>
+            <option value="0.75">0.75×</option>
+            <option value="1" selected>1×</option>
+            <option value="1.25">1.25×</option>
+            <option value="1.5">1.5×</option>
+            <option value="1.75">1.75×</option>
+            <option value="2">2×</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="hint">
+        LoopIt controls the YouTube tab (not an embedded player) for reliable timestamp capture and looping.
+      </div>
+    </section>
+
+    <section class="card">
+      <div class="row between">
+        <div class="label">Intervals</div>
+        <div class="row right">
+          <button id="capStartBtn" class="btn" title="Saves your current time in a video as the start of the interval">Start ⏺</button>
+          <button id="capEndBtn" class="btn" title="Saves your current time in a video as the end of the interval">End ⏹</button>
+          <button id="pushBtn" class="btn" title="Applies the intervals to the video">Apply to tab</button>
+        </div>
+      </div>
+
+      <textarea id="intervalBox" spellcheck="false" placeholder="Format per line: 1:30 2:00 Chorus&#10;or: 90 120 Verse"></textarea>
+
+      <div id="validation" class="validation"></div>
+
+      <div class="hint">
+        Tips: Use <code>mm:ss</code>, <code>hh:mm:ss</code>, or raw seconds. Decimals supported (e.g., <code>1:30.250</code>).
+      </div>
+      <div class="hint small">
+        Saved per-video automatically. Reconnecting the same video restores your intervals.
+      </div>
+    </section>
+
+    <section class="card footer">
+      <div class="small">
+        Heartbeat: <span id="hbMs">100</span> ms • Per-video interval persistence • Loop engine runs inside the YouTube tab
+      </div>
+    </section>
+  </main>
+
+  <script src="sidepanel.js" type="module"></script>
+</body>
+</html>
